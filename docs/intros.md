@@ -6,3 +6,6 @@
 
 # components
 ## layout
+## nft(props|types)
+
+# mock data
