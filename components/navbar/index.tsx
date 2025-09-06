@@ -38,7 +38,7 @@ export default function Example() {
                   <ActiveLink key={item.name}
                     href={item.href}
                     aria-current={item.current ? 'page' : undefined}
-                    activeClass="bg-gray-900 text-white"
+                    activeclass="bg-gray-900 text-white"
                    >
                     <span className="text-gray-300 hover:bg-white/5 hover:text-white rounded-md px-3 py-2 text-sm font-medium">{item.name}</span>
                   </ActiveLink>

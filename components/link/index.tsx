@@ -6,7 +6,7 @@ import { usePathname  } from "next/navigation"
 type LinkProps = {
   href: string
   children: ReactElement
-  activeClass: string
+  activeclass: string
 }
 
 const ActiveLink: FunctionComponent<LinkProps> = ({children, ...props}) => {
@@ -16,7 +16,7 @@ const ActiveLink: FunctionComponent<LinkProps> = ({children, ...props}) => {
   let _defaultClass = `${className} text-gray-100`
 
   if (pathname === props.href) {
-    className = `${className} text-indigo-400 ${props.activeClass}`
+    className = `${className} text-indigo-400 ${props.activeclass}`
   } else {
     className = _defaultClass;
   }
