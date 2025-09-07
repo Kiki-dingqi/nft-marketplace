@@ -1,17 +1,10 @@
 "use client";
 import { createContext, FunctionComponent, useContext, useState } from "react";
-import { MetaMaskInpageProvider } from "@metamask/providers";
-import {Contract, BrowserProvider } from "ethers";
-
-export type Web3State = {
-    ethereum?: MetaMaskInpageProvider;
-    provider?: BrowserProvider;
-    contract?: Contract;
-}
-const Web3Context = createContext<Web3State>(null);
+import {createDefaultState, Web3State} from "./utils";
+const Web3Context = createContext<Web3State>(createDefaultState());
 
 const Web3Provider:FunctionComponent<{children: React.ReactNode}> = ({children}) => { 
-    const [web3Api,setWeb3Api] = useState<Web3State>(null);
+    const [web3Api,setWeb3Api] = useState<Web3State>(createDefaultState());
     return (
         <Web3Context.Provider value={web3Api}>
             {children}
