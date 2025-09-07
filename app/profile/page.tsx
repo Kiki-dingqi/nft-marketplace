@@ -1,6 +1,6 @@
 'use client';
 import { NextPage } from "next";
-import BaseLayout from "@/components/layout/BaseLayout";
+import BaseLayout from "@/components/ui/layout/BaseLayout";
 /* eslint-disable @next/next/no-img-element */
 
 import nfts from "@/content/meta.json";
