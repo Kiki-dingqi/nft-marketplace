@@ -8,6 +8,28 @@ import { NftMeta } from '@/types/nft'
 import { useWeb3 } from '@/components/providers/web3'
 const Home: NextPage = () => {
   const { ethereum, provider, contract, isLoading} = useWeb3();
+  console.log( provider);
+
+  // const getAccount = async () => {
+  //   const accounts = await provider!.listAccounts();
+  //   console.log("accounts==",accounts);
+  // }
+
+  const getAccount = async () => {
+    try {
+      // 主动请求用户授权
+      const accounts = await provider!.send("eth_requestAccounts", []); 
+      console.log("授权的账户：", accounts);
+    } catch (error) {
+      console.log("用户拒绝授权或发生错误：", error);
+    }
+  };
+
+  if(provider){
+    getAccount();
+  }
+
+  
   return (
     <BaseLayout>
       <div className="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">

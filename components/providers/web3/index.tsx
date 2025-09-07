@@ -1,15 +1,18 @@
 "use client";
 import { createContext, FunctionComponent, useContext, useEffect, useState } from "react";
 import {createDefaultState, Web3State} from "./utils";
+import { ethers } from "ethers";
+
 const Web3Context = createContext<Web3State>(createDefaultState());
 
 const Web3Provider:FunctionComponent<{children: React.ReactNode}> = ({children}) => { 
     const [web3Api,setWeb3Api] = useState<Web3State>(createDefaultState());
     useEffect(()=>{ 
         function initWeb3(){
+            const provider = new ethers.BrowserProvider(window.ethereum as any);
             setWeb3Api({
                 ethereum: window.ethereum,
-                provider:null,
+                provider,
                 contract:null,
                 isLoading:false
             })
