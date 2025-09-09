@@ -24,3 +24,8 @@
 ## metamask extension
 
 # Ganache&Truffle | Foundry
+## forge|cast|anvil
+## openzeppelin-contracts:forge install OpenZeppelin/openzeppelin-contracts
+
+# extensions
+## json tools:reset pretify json:ctrl+alt+l
