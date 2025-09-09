@@ -5,6 +5,8 @@ import {Script} from "forge-std/Script.sol";
 import {NftMarket} from "../src/NftMarket.sol";
 
 contract DeployNftMarket is Script {
+    function setUp() public {}
+    
     function run() external returns (address) {
         vm.startBroadcast();
 
