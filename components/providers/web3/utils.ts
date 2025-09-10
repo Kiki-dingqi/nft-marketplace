@@ -42,9 +42,8 @@ const loadContractAddress = async (name: string, networkId: string): Promise<str
   // Foundry 部署记录通常在 broadcast 目录下
   // 例如: broadcast/${contractName}/${networkId}/run-latest.json
   try {
-    const res = await fetch(`/broadcast/${name}.sol/${networkId}/run-latest.json`);
+    const res = await fetch(`/api/get-file?file=/broadcast/Deploy${name}.s.sol/${networkId}/run-latest.json`);
     const deploymentData = await res.json();
-    
     // Foundry 部署记录的结构
     const contractAddress = deploymentData.transactions[0].contractAddress;
     if (contractAddress) {
@@ -73,7 +72,7 @@ export const loadContract = async (
 
   // 加载 Foundry 编译的合约 ABI
   // Foundry 编译的合约通常在 out 目录下，结构为 out/${ContractName}.sol/${ContractName}.json
-  const res = await fetch(`/out/${name}.sol/${name}.json`);
+  const res = await fetch(`/api/get-file?file=/out/${name}.sol/${name}.json`);
   const artifact = await res.json();
 
   // 获取 ABI
@@ -94,6 +93,5 @@ export const loadContract = async (
     abi,
     provider
   );
-
   return contract;
 };
