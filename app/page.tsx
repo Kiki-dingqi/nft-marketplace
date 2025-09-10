@@ -11,7 +11,7 @@ const Home: NextPage = () => {
   console.log("contract=", contract);
   const getNftInfo = async () => {
     // const name = await contract!.name();
-    // const name = await contract!.Contract.interface!.fragments.name();
+    // // const name = await contract!.Contract.interface!.fragments.name();
     // const symbol = await contract!.symbol();
     // console.log("nfts=", name, symbol);
   };

@@ -95,3 +95,43 @@ export const loadContract = async (
   );
   return contract;
 };
+
+// public
+export const getContractAddress = async (name: string) => { 
+    try {
+      const res = await fetch(`/contracts/run-latest.json`);
+      const deploymentData = await res.json();
+      // Foundry 部署记录的结构
+      const contractAddress = deploymentData.transactions[0].contractAddress;
+      if (contractAddress) {
+        return contractAddress;
+      }
+    } catch (error) {
+      console.error(`Failed to load deployment data for ${name}:`, error);
+    }
+    
+    // 如果找不到部署记录，尝试从环境变量获取
+    const envVarAddress = process.env[`NEXT_PUBLIC_${name.toUpperCase()}_ADDRESS`];
+    if (envVarAddress) {
+      return envVarAddress;
+    }
+    
+    throw new Error(`Contract address for ${name} not found`);
+};
+export const getContract = async (name: string, provider: BrowserProvider): Promise<Contract> => { 
+  if(!NETWORK_ID) {
+    return Promise.reject(`Network ID not found!`);
+  }
+
+  const res = await fetch(`/contracts/${name}.json`);
+  const Artifact = await res.json();
+
+  const address = await getContractAddress(name);
+
+  if(address){
+    const contract = new Contract(address, Artifact.abi, provider);
+    return contract;
+  }else{
+    return Promise.reject(`Contract ${name} not loaded`);
+  }
+};
