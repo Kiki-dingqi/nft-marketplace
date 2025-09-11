@@ -9,6 +9,7 @@
 
 # react
 ## hooks
+### npm install swr
 
 # components
 ## layout
