@@ -4,7 +4,7 @@
 import type { NextPage } from 'next'
 import { BaseLayout, NFTList } from '@/components'
 import  nfts  from '@/content/meta.json'
-import { NftMeta } from '@/types/nft'
+import { NftMeta } from '@_types/nft'
 import { useWeb3 } from '@/components/providers/web3'
 const Home: NextPage = () => {
   const { ethereum, provider, contract, isLoading} = useWeb3();

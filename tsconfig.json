@@ -23,6 +23,7 @@
       "@/*": ["./*"],
       "@hooks": ["components/hooks"],
       "@hooks/*": ["components/hooks/*"],
+      "@_types/*": ["types/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
