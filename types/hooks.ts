@@ -9,10 +9,14 @@ export type Web3Dependencies = {
     contract: Contract
 }
 
-export type CrypotoSWRResponse = SWRResponse
+// export type CrypotoSWRResponse = SWRResponse
 
-export type CrypotoHandlerHook = (params: any) => CrypotoSWRResponse
+// export type CrypotoHandlerHook = (params: any) => CrypotoSWRResponse
+
+// export type CrypotoHookFactory = {
+//     (d:Partial<Web3Dependencies>): CrypotoHandlerHook;
+// }
 
 export type CrypotoHookFactory = {
-    (d:Partial<Web3Dependencies>): CrypotoHandlerHook;
+    (d:Partial<Web3Dependencies>): (params: any) => SWRResponse
 }
